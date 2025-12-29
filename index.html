@@ -62,11 +62,48 @@
       -webkit-text-fill-color: transparent;
     }
 
+    /* ================= GLASS SHINE EFFECT ================= */
+    .glass {
+      position: relative;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 26px;
+      box-shadow:
+        0 25px 55px rgba(0,0,0,0.4),
+        inset 0 0 35px rgba(255,215,0,0.1);
+      overflow: hidden;
+    }
+
+    .glass::before {
+      content: "";
+      position: absolute;
+      top: -70%;
+      left: -70%;
+      width: 240%;
+      height: 240%;
+      background: linear-gradient(
+        120deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.45) 50%,
+        transparent 60%
+      );
+      animation: shineMove 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shineMove {
+      0% { transform: translate(-35%, -35%); }
+      50% { transform: translate(35%, 35%); }
+      100% { transform: translate(-35%, -35%); }
+    }
+
     /* ================= LAYOUT ================= */
     .container {
       max-width: 1100px;
-      margin: auto;
-      padding: 80px 20px 60px;
+      margin: 80px auto 60px;
+      padding: 70px 25px;
       text-align: center;
       animation: fadeIn 1.2s ease;
     }
@@ -90,15 +127,11 @@
     }
 
     .divider {
-      width: 80px;
+      width: 90px;
       height: 3px;
       background: linear-gradient(90deg, var(--gold1), var(--gold3));
       margin: 25px auto;
       border-radius: 10px;
-    }
-
-    .status {
-      margin-top: 30px;
     }
 
     .status h3 {
@@ -115,24 +148,25 @@
 
     /* ================= SERVICES ================= */
     .services {
-      margin: 40px auto;
+      margin: 45px auto;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .service {
-      padding: 10px 18px;
-      border: 1px solid rgba(255,215,0,0.4);
-      border-radius: 25px;
+      padding: 12px 20px;
+      border: 1px solid rgba(255,215,0,0.45);
+      border-radius: 30px;
       font-size: 15px;
-      transition: 0.3s;
+      background: rgba(255,255,255,0.05);
+      transition: 0.35s;
     }
 
     .service:hover {
-      background: rgba(255,215,0,0.15);
-      transform: translateY(-3px);
+      background: rgba(255,215,0,0.2);
+      transform: translateY(-5px);
     }
 
     /* ================= CONTACT ================= */
@@ -147,28 +181,28 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin: 35px auto;
-      padding: 14px 30px;
+      margin: 40px auto;
+      padding: 15px 34px;
       background: #25D366;
       color: #fff;
       font-size: 18px;
       text-decoration: none;
-      border-radius: 40px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      transition: 0.3s;
+      border-radius: 45px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+      transition: 0.35s;
     }
 
     .whatsapp:hover {
-      transform: scale(1.08);
+      transform: scale(1.1);
       background: #1ebe5b;
     }
 
     /* ================= MAP ================= */
     .map {
-      margin: 50px auto;
-      border-radius: 14px;
+      margin: 55px auto;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.4);
     }
 
     iframe {
@@ -179,27 +213,26 @@
 
     /* ================= FOOTER ================= */
     .footer {
-      margin-top: 50px;
+      margin-top: 55px;
       font-size: 14px;
-      opacity: 0.7;
+      opacity: 0.75;
     }
-    .dev-link {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-}
 
-.dev-link:hover {
-  text-decoration: underline;
-  opacity: 1;
-}
+    .dev-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .dev-link:hover {
+      text-decoration: underline;
+    }
 
     /* ================= MOBILE ================= */
     @media (max-width: 600px) {
       .container {
-        padding-top: 60px;
+        margin-top: 60px;
+        padding: 55px 18px;
       }
-
       iframe {
         height: 250px;
       }
@@ -215,7 +248,7 @@
 </div>
 
 <!-- CONTENT -->
-<div class="container">
+<div class="container glass">
 
   <h1 class="gold-text">Cube Lighting Studio</h1>
   <h2>Premium Lighting Solutions</h2>
@@ -225,12 +258,11 @@
   <div class="status">
     <h3 class="gold-text">🚧 Website Under Development</h3>
     <p>
-      We are crafting a premium digital experience for you.  
+      We are crafting a premium digital experience for you.
       In the meantime, feel free to reach out for custom lighting solutions.
     </p>
   </div>
 
-  <!-- SERVICES -->
   <div class="services">
     <div class="service">Decorative Lighting</div>
     <div class="service">Architectural Lighting</div>
@@ -238,38 +270,30 @@
     <div class="service">Custom Designs</div>
   </div>
 
-  <!-- CONTACT -->
   <div class="contact">
     📧 info@devprojects.online <br>
     📞 +91 9381187905
   </div>
 
-  <!-- WHATSAPP -->
   <a class="whatsapp" href="https://wa.me/919381187905" target="_blank">
     💬 Chat on WhatsApp
   </a>
 
-  <!-- MAP -->
-  <div class="map">
-    <iframe 
-      src="https://www.google.com/maps?q=India&output=embed"
-      loading="lazy">
-    </iframe>
-  </div>
+  <!-- <div class="map">
+    <iframe src="https://www.google.com/maps?q=India&output=embed" loading="lazy"></iframe>
+  </div> -->
 
   <div class="footer">
-  Developed by 
-  <a href="https://www.thedevstechnologies.online" 
-     target="_blank" 
-     rel="noopener noreferrer"
-     class="dev-link">
-     <strong>TheDevsTechnologies</strong>
-  </a>
-</div>
+    Developed by
+    <a href="https://www.thedevstechnologies.online" target="_blank" class="dev-link">
+      <strong>TheDevsTechnologies</strong>
+    </a>
+  </div>
+
 </div>
 
 <script>
-  window.onload = function () {
+  window.onload = () => {
     document.getElementById("loader").style.display = "none";
   };
 </script>
